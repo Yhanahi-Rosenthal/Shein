@@ -18,10 +18,7 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid rgb(144, 126, 165);  
 }
 
-.footer{
-    background-color: black;
-    width: 100%;
-}
+
 
 .banner{
     background-color: black;
@@ -544,3 +541,82 @@ header{
     transition: 0.1s;
 }
 /* -------------------------------------- */
+/* ---------------footer--------------- */
+.footer{
+    background-color: rgb(136, 135, 135);
+    width: 100%;
+    margin-top: 15%;
+}
+
+.redes{
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.sociales{
+    padding: 0;
+    width: 1.9rem;
+    margin-top: 1rem;
+}
+
+.info{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.info div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info div a{
+    text-decoration: none;
+    color:#363636;
+    font-size: 0.7rem;
+    margin-top: 1rem;
+}
+
+.info div a:hover{
+    color: rgba(255, 255, 255, 0.782);
+    transition: 0.1s;
+}
+
+.wpp{
+    position: fixed;
+    top: 31rem;
+    left: 71rem;
+    width: 60px;
+    border-radius: 20rem;
+    box-shadow: 0 0 2rem 0.3px rgba(0, 0, 0, 0.819);
+    transition: 0.3s;
+}
+
+.wpp:hover{
+    width: 63px;
+    transition: 0.3s;
+}
+
+.tarjetas{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.extra{
+    display: flex;
+    justify-content: space-between;
+}
+
+.extra p{
+    color: #363636;
+    font-size: 0.7rem;
+    margin: 0.7rem;
+}
+
+.footer hr{
+    color:#838181;
+    border-style:groove;
+}
