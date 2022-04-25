@@ -24,6 +24,10 @@ const mainRopa = document.querySelector(".main-ropa")
 document.addEventListener("DOMContentLoaded", ()=>{ mostrarRopa()
 })
 
+const contenedorCarrito = document.querySelector(".carrito1")
+const carrito = []
+let cantidad = 1
+
 function mostrarRopa(){
     prendas.forEach(prenda =>{
         const divRopa = document.createElement("div")
@@ -44,9 +48,12 @@ function mostrarRopa(){
         const button = document.createElement("button")
         button.className = "botones"
         button.textContent = "Comprar"
-        // button.onclick = () =>{
-        //     PonerEnCarrito()
-        // }
+        button.onclick = () =>{
+            PonerEnCarrito(prenda.id)
+            modalCarrito.style.opacity = "1"
+            modalCarrito.style.visibility = "visible"
+        }
+        
 
         divRopa.appendChild(imgRopa)
         divRopa.appendChild(nameRopa)
@@ -55,6 +62,74 @@ function mostrarRopa(){
         
         mainRopa.appendChild(divRopa)
         console.log(mainRopa)
+    })
+}
+
+function PonerEnCarrito(id){
+    const seleccionado = prendas.find(prenda => prenda.id === id)
+    carrito.push(seleccionado)
+    carritoDeCompras(carrito)
+}
+
+function carritoDeCompras(carrito){
+    contenedorCarrito.innerHTML = ""
+    carrito.forEach(prenda =>{
+        const divPrendas = document.createElement("div")
+        divPrendas.className = "divPrenda"
+
+        const imgPrenda = document.createElement("img")
+        imgPrenda.src = prenda.img
+        imgPrenda.className = "imgCarrito"
+
+        const namePrenda = document.createElement("h4")
+        namePrenda.textContent = prenda.name
+        namePrenda.className = "nameCarrito"
+
+        const pricePrenda = document.createElement("b")
+        pricePrenda.textContent = "$" + prenda.price
+        pricePrenda.className = "precioCarrito"
+
+        const divCantidad = document.createElement("div")
+        divCantidad.textContent = cantidad
+
+        const sumar = document.createElement("button")
+        sumar.textContent = "+"
+        sumar.className = "botonSumar"
+
+        const restar = document.createElement("button")
+        restar.textContent = "-"
+        restar.className = "botonRestar"
+
+        const eliminar = document.createElement("button")
+        eliminar.textContent = "Eliminar"
+        eliminar.className = "botonEliminar"
+        eliminar.onclick = ()=>{
+                eliminar.removeEventListener("click", PonerEnCarrito(id),false)
+            }
+
+        sumar.onclick = ()=>{
+            cantidad++
+            divCantidad.innerHTML = cantidad 
+        }
+
+        restar.onclick = ()=>{
+            divCantidad.innerHTML = cantidad 
+            cantidad--
+            if(cantidad < 1){
+                cantidad++
+            }
+        }
+
+        divPrendas.appendChild(eliminar)
+        divPrendas.appendChild(divCantidad)
+        divPrendas.appendChild(sumar)
+        divPrendas.appendChild(restar)
+        divPrendas.appendChild(imgPrenda)
+        divPrendas.appendChild(namePrenda)
+        divPrendas.appendChild(pricePrenda)
+
+        contenedorCarrito.appendChild(divPrendas)
+
     })
 }
 

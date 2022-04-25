@@ -19,3 +19,21 @@ window.addEventListener("click", (e)=>{
         modalUser.style.visibility = "hidden"
     }
 })
+
+// --------------------------modal Carrito----------------------------
+
+let abrirC = document.querySelector(".carrito")
+let modalCarrito = document.querySelector(".modalCarrito")
+
+abrirC.addEventListener("click", (e)=>{
+    e.preventDefault()
+    modalCarrito.style.opacity = "1"
+    modalCarrito.style.visibility = "visible"
+})
+
+window.addEventListener("click", (e)=>{
+    if(e.target === modalCarrito){
+        modalCarrito.style.opacity = "0"
+        modalCarrito.style.visibility = "hidden"
+    }
+})
