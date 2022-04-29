@@ -1,23 +1,11 @@
 const prendas = [
-    {id:1, name:"Campera Lloud Versace", price: 2345, img: src="./img/campera-ufo.png"},
-     {id:2, name:"Campera Oxford", price: 4323, img: src="./img/campera-cuero.png"},
-    {id:3, name:"Campera Toloure Valmur", price: 3234, img: src="./img/Campera-rosie.png"},
-    {id:4, name:"Saco gamuza L´perrier", price: 5246, img: src="./img/ropa-otono-mujer.jpg"},
-    {id:5, name:"Campera Baobab - Beige", price: 2999, img: src="./img/campera-mujer-pelos.png"},
-    {id:6, name:"Campera Emil Zaoré", price: 3595, img: src="./img/Campera-Emil.png"}
+    {id:0, name:"Campera Lloud Versace", price: 2345, img: src="./img/campera-ufo.png", cantidad:  1  },
+     {id:1, name:"Campera Oxford", price: 4323, img: src="./img/campera-cuero.png", cantidad:  1 },
+    {id:2, name:"Campera Toloure Valmur", price: 3234, img: src="./img/Campera-rosie.png", cantidad:  1 },
+    {id:3, name:"Saco gamuza L´perrier", price: 5246, img: src="./img/ropa-otono-mujer.jpg", cantidad:  1 },
+    {id:4, name:"Campera Baobab - Beige", price: 2999, img: src="./img/campera-mujer-pelos.png", cantidad:  1 },
+    {id:5, name:"Campera Emil Zaoré", price: 3595, img: src="./img/Campera-Emil.png", cantidad:  1 }
 ]
-
-const productoStorage = (id, valor)=>{
-    localStorage.setItem(id, valor)
-} 
-
-for(const prenda of prendas){
-    productoStorage(prenda.id, JSON.stringify(prenda))
-}
-
-productoStorage('vestidor', JSON.stringify(prendas))
-
-const datos = JSON.parse(localStorage.getItem('prendas'))
 
 const mainRopa = document.querySelector(".main-ropa")
 
@@ -25,8 +13,10 @@ document.addEventListener("DOMContentLoaded", ()=>{ mostrarRopa()
 })
 
 const contenedorCarrito = document.querySelector(".carrito1")
-const carrito = []
-let cantidad = 1
+let carrito = []
+let cantidad = 1                                                          
+
+
 
 function mostrarRopa(){
     prendas.forEach(prenda =>{
@@ -49,10 +39,11 @@ function mostrarRopa(){
         button.className = "botones"
         button.textContent = "Comprar"
         button.onclick = () =>{
-            PonerEnCarrito(prenda.id)
+            PonerEnCarrito(prenda)
             modalCarrito.style.opacity = "1"
             modalCarrito.style.visibility = "visible"
         }
+        
         
 
         divRopa.appendChild(imgRopa)
@@ -65,15 +56,63 @@ function mostrarRopa(){
     })
 }
 
-function PonerEnCarrito(id){
-    const seleccionado = prendas.find(prenda => prenda.id === id)
-    carrito.push(seleccionado)
+function PonerEnCarrito(prenda){
+    
+    const input = document.getElementsByClassName("divCantidad")
+    for(i = 0; i < carrito.length ; i++){
+        if(carrito[i].id === prenda.id){
+            carrito[i].cantidad++
+            const total = input[i]
+            total.value++
+            console.log(carrito)
+            return null;
+            // return null hace que no se ejecute carrito.push ni caritodecompras cuando se repita.
+            
+        }
+        
+    }
+    carrito.push(prenda)
+    
+    carritoDeCompras()
+    
+    
+}
+
+function sacarDelCarrito(prenda){
+
+    const input = document.getElementsByClassName("divCantidad")
+    for(i = 0; i < carrito.length ; i++){
+        if(carrito[i].id === prenda.id){
+            carrito[i].cantidad--
+            const total = input[i]
+            total.value--
+            console.log(carrito)
+            return null;
+            // return null hace que no se ejecute carrito.push ni caritodecompras cuando se repita.
+            
+        }
+        
+    }
+    carrito.push(prenda)
+    
+    carritoDeCompras()
+}
+
+
+function vaciarCarrito(){
+    carrito = []
     carritoDeCompras(carrito)
 }
 
-function carritoDeCompras(carrito){
+
+function carritoDeCompras(){
     contenedorCarrito.innerHTML = ""
-    carrito.forEach(prenda =>{
+
+    carrito.forEach(prenda =>{        
+
+        localStorage.setItem(prenda.id, JSON.stringify(prenda))
+        
+
         const divPrendas = document.createElement("div")
         divPrendas.className = "divPrenda"
 
@@ -89,38 +128,47 @@ function carritoDeCompras(carrito){
         pricePrenda.textContent = "$" + prenda.price
         pricePrenda.className = "precioCarrito"
 
-        const divCantidad = document.createElement("div")
-        divCantidad.textContent = cantidad
+        const divCantidad = document.createElement("input")
+        divCantidad.type = "number"
+        divCantidad.min = "1"
+        divCantidad.value = prenda.cantidad
+        divCantidad.textContent = prenda.cantidad 
+        divCantidad.className = "divCantidad"
+        
+        
 
         const sumar = document.createElement("button")
         sumar.textContent = "+"
         sumar.className = "botonSumar"
 
+        sumar.onclick = () =>{
+            PonerEnCarrito(prenda)
+        }
+
         const restar = document.createElement("button")
         restar.textContent = "-"
         restar.className = "botonRestar"
-
-        const eliminar = document.createElement("button")
-        eliminar.textContent = "Eliminar"
-        eliminar.className = "botonEliminar"
-        eliminar.onclick = ()=>{
-                eliminar.removeEventListener("click", PonerEnCarrito(id),false)
-            }
-
-        sumar.onclick = ()=>{
-            cantidad++
-            divCantidad.innerHTML = cantidad 
-        }
+        
 
         restar.onclick = ()=>{
-            divCantidad.innerHTML = cantidad 
-            cantidad--
-            if(cantidad < 1){
-                cantidad++
-            }
+            sacarDelCarrito(prenda)
         }
 
-        divPrendas.appendChild(eliminar)
+        let modalCarrito = document.querySelector(".modalCarrito")
+
+
+        const eliminar = document.createElement("button")
+        eliminar.textContent = "Borrar todo"
+        eliminar.className = "btn-eliminar"
+        eliminar.onclick = ()=>{
+            vaciarCarrito(prenda.id) 
+        }
+
+        modalCarrito.appendChild(eliminar)
+        
+        
+
+        
         divPrendas.appendChild(divCantidad)
         divPrendas.appendChild(sumar)
         divPrendas.appendChild(restar)
@@ -132,6 +180,8 @@ function carritoDeCompras(carrito){
 
     })
 }
+
+
 
 const Diseñadores = [
     {id:1, name:"Balenciaga", pag: "#", img: src="./img/balenciaga.png"},
@@ -164,5 +214,6 @@ function mostrarDiseñados(){
         mainRopa2.appendChild(divRopa1)
     })
 }
+
 
 

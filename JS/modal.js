@@ -37,3 +37,5 @@ window.addEventListener("click", (e)=>{
         modalCarrito.style.visibility = "hidden"
     }
 })
+
+

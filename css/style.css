@@ -5,7 +5,7 @@ body{
 }
 
 body::-webkit-scrollbar {
-  width: 12px;          
+  width: 8px;          
 }
 
 body::-webkit-scrollbar-track {
@@ -14,7 +14,7 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
     background-color: #000000;
-  border-radius: 20px;      
+  border-radius: 3px;      
   border: 3px solid rgb(144, 126, 165);  
 }
 
@@ -148,21 +148,22 @@ header{
     flex-direction: row;
     gap: 4rem;
     margin-bottom: 4rem;
+    width: 100%;
 }
 
 .img-interior{
-    position: relative;
+    /* position: relative; */
     overflow: hidden;
     cursor: pointer;
-    border: solid 1rem black;
-    background-color: #000000;
+    border: solid 1rem rgb(95, 95, 95);
+    background-color: rgb(95, 95, 95);
+    width: 90%;
 }
 
 .ventana{
     position: absolute;
     top:0;
     opacity: 0;
-    background-color: #000000;
     display: flex;
     justify-content: center;
 }
@@ -240,7 +241,7 @@ header{
     width: 22rem;
     height: 31rem;
     box-shadow: 0.1rem 0.2rem 1rem 1px rgb(116, 116, 116);
-    border: solid black;
+    border: solid rgba(0, 0, 0, 0);
     cursor: pointer;
 }
 
@@ -625,8 +626,9 @@ header{
     width: 10%;
 }
 
-.nameCarrito{
-
+.btn-eliminar{
+    position: absolute;
+    margin: 25rem 0 0 19rem;
 }
 
 /* ---------------footer--------------- */
@@ -678,13 +680,15 @@ header{
     left: 71rem;
     width: 60px;
     border-radius: 20rem;
-    box-shadow: 0 0 2rem 0.3px rgba(0, 0, 0, 0.819);
+    box-shadow: 0 0 0.3rem 0.1px rgba(0, 0, 0, 0.819);
     transition: 0.3s;
 }
 
 .wpp:hover{
-    width: 63px;
+    width: 57px;
     transition: 0.3s;
+    box-shadow: 0 0 0.7rem 0.3px rgba(0, 0, 0, 0.819);
+
 }
 
 .tarjetas{
