@@ -14,7 +14,10 @@ document.addEventListener("DOMContentLoaded", ()=>{ mostrarRopa()
 
 const contenedorCarrito = document.querySelector(".carrito1")
 let carrito = []
-let cantidad = 1                                                          
+let cantidad = 1
+if(cantidad < 1){
+    cantidad === 1
+}                                                          
 
 
 
@@ -42,6 +45,14 @@ function mostrarRopa(){
             PonerEnCarrito(prenda)
             modalCarrito.style.opacity = "1"
             modalCarrito.style.visibility = "visible"
+
+            Toastify({
+
+                text: "Agregaste un producto al carrito",
+                
+                duration: 3000
+                
+                }).showToast();
         }
         
         
@@ -54,6 +65,8 @@ function mostrarRopa(){
         mainRopa.appendChild(divRopa)
         console.log(mainRopa)
     })
+
+   
 }
 
 function PonerEnCarrito(prenda){
@@ -64,7 +77,7 @@ function PonerEnCarrito(prenda){
             carrito[i].cantidad++
             const total = input[i]
             total.value++
-            console.log(carrito)
+            carritoDeCompras()
             return null;
             // return null hace que no se ejecute carrito.push ni caritodecompras cuando se repita.
             
@@ -74,7 +87,7 @@ function PonerEnCarrito(prenda){
     carrito.push(prenda)
     
     carritoDeCompras()
-    
+    total()
     
 }
 
@@ -86,7 +99,7 @@ function sacarDelCarrito(prenda){
             carrito[i].cantidad--
             const total = input[i]
             total.value--
-            console.log(carrito)
+            carritoDeCompras()
             return null;
             // return null hace que no se ejecute carrito.push ni caritodecompras cuando se repita.
             
@@ -94,20 +107,24 @@ function sacarDelCarrito(prenda){
         
     }
     carrito.push(prenda)
-    
+    // total()
     carritoDeCompras()
+    
 }
+
+
 
 
 function vaciarCarrito(){
     carrito = []
+    total()
     carritoDeCompras(carrito)
 }
 
 
 function carritoDeCompras(){
     contenedorCarrito.innerHTML = ""
-
+    
     carrito.forEach(prenda =>{        
 
         localStorage.setItem(prenda.id, JSON.stringify(prenda))
@@ -115,6 +132,7 @@ function carritoDeCompras(){
 
         const divPrendas = document.createElement("div")
         divPrendas.className = "divPrenda"
+        
 
         const imgPrenda = document.createElement("img")
         imgPrenda.src = prenda.img
@@ -131,11 +149,17 @@ function carritoDeCompras(){
         const divCantidad = document.createElement("input")
         divCantidad.type = "number"
         divCantidad.min = "1"
+        divCantidad.readOnly = "readOnly"
         divCantidad.value = prenda.cantidad
-        divCantidad.textContent = prenda.cantidad 
         divCantidad.className = "divCantidad"
         
-        
+        const borrarPrenda = document.createElement("button")
+        borrarPrenda.className = "botonborrar"
+        borrarPrenda.textContent = "borrar"
+
+        borrarPrenda.addEventListener("click", () =>{
+            borrarPrenda()
+        })
 
         const sumar = document.createElement("button")
         sumar.textContent = "+"
@@ -143,6 +167,14 @@ function carritoDeCompras(){
 
         sumar.onclick = () =>{
             PonerEnCarrito(prenda)
+
+            Toastify({
+
+                text: "Agregaste otro producto al carrito",
+                
+                duration: 3000
+                
+                }).showToast();
         }
 
         const restar = document.createElement("button")
@@ -152,23 +184,35 @@ function carritoDeCompras(){
 
         restar.onclick = ()=>{
             sacarDelCarrito(prenda)
+
+            Toastify({
+
+                text: "Quitaste un producto del carrito",
+                
+                duration: 3000
+                
+                }).showToast();
         }
 
         let modalCarrito = document.querySelector(".modalCarrito")
-
+    
 
         const eliminar = document.createElement("button")
         eliminar.textContent = "Borrar todo"
         eliminar.className = "btn-eliminar"
         eliminar.onclick = ()=>{
-            vaciarCarrito(prenda.id) 
+            vaciarCarrito(prenda.id)
+            
+            swal({
+                
+                icon: "Error",
+              }); 
         }
 
         modalCarrito.appendChild(eliminar)
         
         
-
-        
+        divPrendas.appendChild(borrarPrenda)
         divPrendas.appendChild(divCantidad)
         divPrendas.appendChild(sumar)
         divPrendas.appendChild(restar)
@@ -179,7 +223,36 @@ function carritoDeCompras(){
         contenedorCarrito.appendChild(divPrendas)
 
     })
+    total()
+    
 }
+
+
+
+function borrarPrenda(){
+    const botonBorrar = e.target
+    const ropa = botonBorrar.closest(".divPrenda")
+    const id = ropa.querySelector(".id").textContent
+    for (let i = 0; i < carrito.length; i++) {
+        if(carrito[i].id === id){
+            carrito.splice(i, 1)
+        }
+        
+    }
+    divPrenda.remove()
+}
+
+function total(){
+    let total = 0
+    const totalPrendas = document.querySelector(".total")
+    carrito.forEach((prenda) =>{
+        const price = prenda.price
+        total = total + price*prenda.cantidad
+    })
+
+    totalPrendas.innerHTML = "total: $" + total
+}
+
 
 
 
