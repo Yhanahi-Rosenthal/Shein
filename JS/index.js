@@ -101,13 +101,11 @@ function sacarDelCarrito(prenda){
             total.value--
             carritoDeCompras()
             return null;
-            // return null hace que no se ejecute carrito.push ni caritodecompras cuando se repita.
-            
         }
         
     }
     carrito.push(prenda)
-    // total()
+    
     carritoDeCompras()
     
 }
@@ -148,8 +146,7 @@ function carritoDeCompras(){
 
         const divCantidad = document.createElement("input")
         divCantidad.type = "number"
-        divCantidad.min = "1"
-        divCantidad.readOnly = "readOnly"
+        divCantidad.disabled = "disabled"
         divCantidad.value = prenda.cantidad
         divCantidad.className = "divCantidad"
         
@@ -157,9 +154,21 @@ function carritoDeCompras(){
         borrarPrenda.className = "botonborrar"
         borrarPrenda.textContent = "borrar"
 
-        borrarPrenda.addEventListener("click", () =>{
-            borrarPrenda()
-        })
+        borrarPrenda.onclick = ()=>{
+            let id = document.querySelector(".divPrenda")  
+            carrito.splice(id, 1)
+            divPrendas.remove()
+            total()
+
+            
+            Toastify({
+
+                text: "Borraste un producto",
+                
+                duration: 3000
+                
+                }).showToast();
+        }
 
         const sumar = document.createElement("button")
         sumar.textContent = "+"
@@ -180,10 +189,14 @@ function carritoDeCompras(){
         const restar = document.createElement("button")
         restar.textContent = "-"
         restar.className = "botonRestar"
+        if(prenda.cantidad < 2){
+            restar.disabled = "disabled"
+        }
         
 
         restar.onclick = ()=>{
             sacarDelCarrito(prenda)
+            
 
             Toastify({
 
@@ -227,20 +240,6 @@ function carritoDeCompras(){
     
 }
 
-
-
-function borrarPrenda(){
-    const botonBorrar = e.target
-    const ropa = botonBorrar.closest(".divPrenda")
-    const id = ropa.querySelector(".id").textContent
-    for (let i = 0; i < carrito.length; i++) {
-        if(carrito[i].id === id){
-            carrito.splice(i, 1)
-        }
-        
-    }
-    divPrenda.remove()
-}
 
 function total(){
     let total = 0
