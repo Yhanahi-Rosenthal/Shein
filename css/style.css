@@ -56,6 +56,7 @@ header{
     font-size: 0.8em;
     margin-top: 0;
     text-align: center;
+    transition: 0.5s;
 }
 
 .header-menu li{
@@ -90,58 +91,6 @@ header{
 .header-portada{
     width: 100%;
 }
-
-/* -------------------------------------------------------------------------------- */
-
-.header-sticky{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: rgba(0, 0, 0, 0.389);
-    padding: 0;
-    width: 100%;
-    max-width: 100%;
-    height: 3rem;
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    font-size: 0.8em;
-    margin-top: 0;
-    text-align: center;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.header-sticky li{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    list-style: none;
-}
-
-.header-sticky li a{
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    padding: 10px;
-}
-
-.header-sticky li a:hover{
-    text-shadow: #ffffff 0 0 1rem;
-    transition: 0.5s;
-
-    -webkit-animation: kenburns 0.4s ease-out both;
-    animation: kenburns 0.4s ease-out both;
-}
-
-.header-sticky .slach{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0;
-    color: rgba(255, 255, 255, 0);
-}
-
-/* -------------------------------------------------------------- */
 
 .header-portada{
     width: 100%;
@@ -393,6 +342,7 @@ header{
     }
   }
 
+/* ----------------------------carrito-user---------------------------- */
 
 .img{
     padding: 0.3rem;
@@ -460,7 +410,7 @@ header{
     background-color: rgba(255, 255, 255, 0);
     filter: invert(100%);
     position: absolute;
-    margin: 1rem 0 0 68rem;
+    margin: 1rem 0 0 0;
 }
 
 .header-menu .user:hover{
@@ -488,6 +438,20 @@ header{
     }
   }
 
+  .globo-cantidad{
+        border-radius: 20rem;
+        width: 13px;
+        bottom:0;
+        right:0;
+        background-color: rgb(0, 251, 255);
+        position:absolute;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        font-family:Arial, Helvetica, sans-serif;
+        z-index:99;
+}
+/* ---------------------------------------------------------- */
 
 
 .card{
@@ -851,8 +815,10 @@ header{
 /* -------------------------modal botones------------------------------- */
 
 .agregar{
-    background: rgb(0,207,255);
-    background: linear-gradient(90deg, rgba(0,207,255,0.8046568969384629) 27%, rgba(102,226,17,0.8046568969384629) 100%, rgba(255,119,0,0.8046568969384629) 100%);
+    background: rgb(247,236,203);
+background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.8130602582830007) 47%, rgba(255,239,191,1) 100%);
+    /* background: rgb(0,207,255);
+    background: linear-gradient(90deg, rgba(0,207,255,0.8046568969384629) 27%, rgba(102,226,17,0.8046568969384629) 100%, rgba(255,119,0,0.8046568969384629) 100%); */
     color: rgb(255, 255, 255);
     border-radius: 0.8rem;
 }
@@ -878,3 +844,4 @@ header{
 }
 
 /* -------------------------------------------- */
+

@@ -1,16 +1,13 @@
-const menu = document.getElementsByClassName("header-sticky")
+const menu = document.querySelector(".header-menu")
 
-window.onscroll = () =>{
-    sticky()
-}
-
-function sticky(){
-    if(window.pageYOffset === 2){
-        menu.style.opacity = "0"
-        menu.style.visibility = "visible"
-    }else{
-        menu.style.opacity = "1"
-        menu.style.visibility = "hidden"
+window.addEventListener("scroll", () =>{
+    if(window.pageYOffset < 60){
+        menu.style.position = "absolute"
+        menu.style.cssText = null
+        
+    }else if(window.pageYOffset > 130){
+        menu.style.position = "fixed"
+        menu.style.top = "0"
     }
-}
+})
 

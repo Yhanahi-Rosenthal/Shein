@@ -45,8 +45,7 @@ function mostrarRopa(){
         button.textContent = "Comprar"
         button.onclick = () =>{
             PonerEnCarrito(prenda)
-            modalCarrito.style.opacity = "1"
-            modalCarrito.style.visibility = "visible"
+            globoTotal()
 
             Toastify({
 
@@ -80,6 +79,7 @@ function PonerEnCarrito(prenda){
             carrito[i].cantidad++
             const total = input[i]
             total.value++
+            globoTotal()
             carritoDeCompras()
             return null;
             // return null sirve para que no se ejecute carrito.push ni caritodecompras cuando se repita.
@@ -155,7 +155,7 @@ function carritoDeCompras(){
             carrito.splice(id, 1)
             divPrendas.remove()
             total()
-
+            globoTotal()
             
             Toastify({
 
@@ -174,7 +174,7 @@ function carritoDeCompras(){
 
         sumar.onclick = () =>{
             PonerEnCarrito(prenda)
-
+            globoTotal()
             Toastify({
 
                 className: "agregar",
@@ -200,7 +200,7 @@ function carritoDeCompras(){
 
         restar.onclick = ()=>{
             sacarDelCarrito(prenda)
-            
+            globoTotal()
 
             Toastify({
 
@@ -230,8 +230,8 @@ function carritoDeCompras(){
               })
               .then((willDelete) => {
                 if (willDelete) {
-                  swal(vaciarCarrito(prenda.id), { 
-                  });
+                  swal(vaciarCarrito(prenda.id),
+                  swal(globoTotal()));
                 }
               });
         }
@@ -263,6 +263,17 @@ function total(){
     })
 
     totalPrendas.innerHTML = "Total: $" + total
+}
+
+function globoTotal(){
+    let cantidad = 0
+    let globoCantidad = document.querySelector(".globo-cantidad")
+    carrito.forEach((prenda)=>{
+        cantidad = cantidad + prenda.cantidad
+    })
+
+    globoCantidad.innerHTML = cantidad
+    carritoDeCompras()
 }
 
 
