@@ -1,11 +1,17 @@
 const prendas = [
     {id:0, name:"Campera Lloud Versace", price: 2345, img: src="./img/campera-ufo.png", cantidad:  1  },
-     {id:1, name:"Campera Oxford", price: 4323, img: src="./img/campera-cuero.png", cantidad:  1 },
+     {id:1, name:"Campera klark Oxford", price: 4323, img: src="./img/campera-cuero.png", cantidad:  1 },
     {id:2, name:"Campera Toloure Valmur", price: 3234, img: src="./img/Campera-rosie.png", cantidad:  1 },
     {id:3, name:"Saco gamuza L´perrier", price: 5246, img: src="./img/ropa-otono-mujer.jpg", cantidad:  1 },
     {id:4, name:"Campera Baobab - Beige", price: 2999, img: src="./img/campera-mujer-pelos.png", cantidad:  1 },
     {id:5, name:"Campera Emil Zaoré", price: 3595, img: src="./img/Campera-Emil.png", cantidad:  1 }
 ]
+
+const [ , b, c, d, , g] = prendas
+console.log(b)
+console.log(c)
+console.log(d)
+console.log(g)
 
 const mainRopa = document.querySelector(".main-ropa")
 
@@ -14,11 +20,7 @@ document.addEventListener("DOMContentLoaded", ()=>{ mostrarRopa()
 
 const contenedorCarrito = document.querySelector(".carrito1")
 let carrito = []
-let cantidad = 1
-if(cantidad < 1){
-    cantidad === 1
-}                                                          
-
+let cantidad = 1                                           
 
 
 function mostrarRopa(){
@@ -48,6 +50,7 @@ function mostrarRopa(){
 
             Toastify({
 
+                className: "agregar",
                 text: "Agregaste un producto al carrito",
                 
                 duration: 3000
@@ -79,7 +82,7 @@ function PonerEnCarrito(prenda){
             total.value++
             carritoDeCompras()
             return null;
-            // return null hace que no se ejecute carrito.push ni caritodecompras cuando se repita.
+            // return null sirve para que no se ejecute carrito.push ni caritodecompras cuando se repita.
             
         }
         
@@ -124,9 +127,8 @@ function carritoDeCompras(){
     contenedorCarrito.innerHTML = ""
     
     carrito.forEach(prenda =>{        
-
-        localStorage.setItem(prenda.id, JSON.stringify(prenda))
         
+        localStorage.setItem(prenda.id, JSON.stringify(prenda))
 
         const divPrendas = document.createElement("div")
         divPrendas.className = "divPrenda"
@@ -143,12 +145,6 @@ function carritoDeCompras(){
         const pricePrenda = document.createElement("b")
         pricePrenda.textContent = "$" + prenda.price
         pricePrenda.className = "precioCarrito"
-
-        const divCantidad = document.createElement("input")
-        divCantidad.type = "number"
-        divCantidad.disabled = "disabled"
-        divCantidad.value = prenda.cantidad
-        divCantidad.className = "divCantidad"
         
         const borrarPrenda = document.createElement("button")
         borrarPrenda.className = "botonborrar"
@@ -163,7 +159,9 @@ function carritoDeCompras(){
             
             Toastify({
 
-                text: "Borraste un producto",
+                className: "borrar",
+
+                text: "Producto borrado!",
                 
                 duration: 3000
                 
@@ -179,6 +177,8 @@ function carritoDeCompras(){
 
             Toastify({
 
+                className: "agregar",
+
                 text: "Agregaste otro producto al carrito",
                 
                 duration: 3000
@@ -186,12 +186,16 @@ function carritoDeCompras(){
                 }).showToast();
         }
 
+        const divCantidad = document.createElement("input")
+        divCantidad.type = "number"
+        divCantidad.disabled = "disabled"
+        divCantidad.value = prenda.cantidad
+        divCantidad.className = "divCantidad"
+
         const restar = document.createElement("button")
         restar.textContent = "-"
         restar.className = "botonRestar"
-        if(prenda.cantidad < 2){
-            restar.disabled = "disabled"
-        }
+        prenda.cantidad < 2 ? restar.disabled = "disabled" : prenda.cantidad
         
 
         restar.onclick = ()=>{
@@ -199,6 +203,8 @@ function carritoDeCompras(){
             
 
             Toastify({
+
+                className: "quitar",
 
                 text: "Quitaste un producto del carrito",
                 
@@ -211,15 +217,23 @@ function carritoDeCompras(){
     
 
         const eliminar = document.createElement("button")
-        eliminar.textContent = "Borrar todo"
+        eliminar.textContent = "Vaciar carrito"
         eliminar.className = "btn-eliminar"
         eliminar.onclick = ()=>{
-            vaciarCarrito(prenda.id)
-            
             swal({
-                
-                icon: "Error",
-              }); 
+                title: "Estas seguro/a que quieres borrar todo?",
+                text: "",
+                icon: "error",
+                buttons: true,
+                dangerMode: true,
+                className: "vaciarCarrito"
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  swal(vaciarCarrito(prenda.id), { 
+                  });
+                }
+              });
         }
 
         modalCarrito.appendChild(eliminar)
@@ -235,30 +249,32 @@ function carritoDeCompras(){
 
         contenedorCarrito.appendChild(divPrendas)
 
+       
     })
     total()
-    
 }
-
 
 function total(){
     let total = 0
     const totalPrendas = document.querySelector(".total")
     carrito.forEach((prenda) =>{
-        const price = prenda.price
-        total = total + price*prenda.cantidad
+        const price = prenda?.price
+        total = total + price*prenda?.cantidad
     })
 
-    totalPrendas.innerHTML = "total: $" + total
+    totalPrendas.innerHTML = "Total: $" + total
 }
-
-
 
 
 const Diseñadores = [
     {id:1, name:"Balenciaga", pag: "#", img: src="./img/balenciaga.png"},
     {id:2, name:"Giorgio Armani", pag: "#", img: src="./img/giorgio.png"},
     {id:3, name:"Carolina Herrera", pag: "#", img: src="./img/herrera.png"},
+    
+]
+
+const diseñadores2 = [
+    ...Diseñadores,
     {id:4, name:"Coco Chanel", pag: "#", img: src="./img/chanel.png"}
 ]
 
@@ -266,8 +282,9 @@ const mainRopa2 = document.querySelector(".main-ropa2")
 
 document.addEventListener("DOMContentLoaded", () =>{mostrarDiseñados()})
 
+
 function mostrarDiseñados(){
-    Diseñadores.forEach(diseñado =>{
+    diseñadores2.forEach(diseñado =>{
         const divRopa1 = document.createElement("a")
         divRopa1.className = "card"
         divRopa1.href = diseñado.pag
