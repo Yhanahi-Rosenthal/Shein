@@ -696,18 +696,43 @@ header{
 }
 
 .botonSumar{
+    background-color: #ffffffb2;
+    border-color: rgba(170, 170, 170, 0.686);
+    border-radius: 7px;
     margin: 2.9rem 0 0 -1rem;
     height: 1.3rem;
+    transition: 0.15s;
+    cursor: pointer;
+}
+
+.botonSumar:hover{
+    filter: invert();
 }
 
 .botonRestar{
+    background-color: #ffffffb2;
+    border-color: rgba(170, 170, 170, 0.686);
+    border-radius: 7px;
+    width: 25px;
     margin: 2.9rem 0 0 -4.1rem;
     height: 1.3rem;
+    transition: 0.15s;
+    cursor: pointer;
+}
+
+.botonRestar:hover{
+    filter: invert();
 }
 
 .botonborrar{
-    margin: 3rem 0 0 26rem;
-    height: 1.3rem
+    margin: 3rem 0 0 28rem;
+    height: 1rem;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.botonborrar:hover{
+    filter:sepia();
 }
 
 .precioCarrito{
@@ -843,5 +868,90 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
     background-color: #ffffffe3;
 }
 
-/* -------------------------------------------- */
+/* -------------------spinner------------------------- */
+
+.fondo-carga{
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.847);
+    z-index: 99999999999999;
+}
+
+.lds-grid {
+    display: inline-block;
+    position: relative;
+    top: 45%;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-grid div {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background:  #fed;
+    animation: lds-grid 1.2s linear infinite;
+  }
+  .lds-grid div:nth-child(1) {
+    top: 8px;
+    left: 8px;
+    animation-delay: 0s;
+  }
+  .lds-grid div:nth-child(2) {
+    top: 8px;
+    left: 32px;
+    animation-delay: -0.4s;
+  }
+  .lds-grid div:nth-child(3) {
+    top: 8px;
+    left: 56px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(4) {
+    top: 32px;
+    left: 8px;
+    animation-delay: -0.4s;
+  }
+  .lds-grid div:nth-child(5) {
+    top: 32px;
+    left: 32px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(6) {
+    top: 32px;
+    left: 56px;
+    animation-delay: -1.2s;
+  }
+  .lds-grid div:nth-child(7) {
+    top: 56px;
+    left: 8px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(8) {
+    top: 56px;
+    left: 32px;
+    animation-delay: -1.2s;
+  }
+  .lds-grid div:nth-child(9) {
+    top: 56px;
+    left: 56px;
+    animation-delay: -1.6s;
+  }
+  @keyframes lds-grid {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+
+/* ------------------------------------------------ */
 

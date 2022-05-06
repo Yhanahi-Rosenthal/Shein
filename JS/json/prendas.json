@@ -1,0 +1,43 @@
+[{
+    "id": 0,
+    "name": "Campera Lloud Versace",
+    "price": 2345,
+    "img": "img/campera-ufo.png",
+    "cantidad": 1
+},
+{
+    "id": 1,
+    "name": "Campera klark Oxford",
+    "price": 4323,
+    "img": "img/campera-cuero.png",
+    "cantidad": 1
+},
+{
+    "id": 2,
+    "name": "Campera Toloure Valmur",
+    "price": 3234,
+    "img": "img/Campera-rosie.png",
+    "cantidad": 1
+},
+{
+    "id": 3,
+    "name": "Saco gamuza L´perrier",
+    "price": 5246,
+    "img": "img/ropa-otono-mujer.jpg",
+    "cantidad": 1
+},
+{
+    "id": 4,
+    "name": "Campera Baobab - Beige",
+    "price": 2999,
+    "img": "img/campera-mujer-pelos.png",
+    "cantidad": 1
+},
+{
+    "id": 5,
+    "name": "Campera Emil Zaoré",
+    "price": 3595,
+    "img": "img/Campera-Emil.png",
+    "cantidad": 1
+}
+]
