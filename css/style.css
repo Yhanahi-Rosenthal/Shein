@@ -360,9 +360,8 @@ header{
 }
 .buscar input{
     margin:0.2rem;
-    width: 0;
-    height: 0.7rem;
-    padding: 0.8rem 0.6rem;
+    width: 1rem;
+    padding: 0.3rem 0.36rem;
     font-size: 20px;
     color: none;
     outline: 1px;
@@ -370,6 +369,7 @@ header{
     border-radius: 10rem;
     transition: all 0.8s ease; 
 }
+
 .btn{
     position: absolute;
     top: 0px;
@@ -382,8 +382,17 @@ header{
     color: rgb(255, 255, 255);
     font-size: 1rem;
     border-radius: 80%;
+    border: solid;
+    border-color: #cfcfcf43;
     cursor: pointer;
+    transition: 0.7s;
 }
+
+.btn:hover{
+    border-color: #ffffffc6;
+    transition: 0.8s;
+}
+
 .buscar:hover input{
     width: 15rem;
 }
@@ -627,19 +636,19 @@ header{
 }
 
 .btn-compra{
+    text-decoration: none;
     background-color: black;
     color: rgb(246, 204, 125);
     position: absolute;
-    margin: 22rem 0 0 11.5rem;
+    margin: 28rem 0 0 0;
     border-radius: 0.5rem;
     padding: 0.7rem;
-    box-shadow: 0 0 0.9rem 0.1rem rgba(54, 54, 54, 0.742);
     cursor: pointer;
     transition: 0.3s;
 }
 
 .btn-compra:hover{
-    background-color:#1e1e1ede;
+    background-color:#5b5858de;
     transition: 0.3s;
     border-color: #1e1e1ede;
 }
@@ -871,8 +880,10 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
 /* -------------------spinner------------------------- */
 
 .fondo-carga{
-    opacity: 1;
-    visibility: visible;
+    /* opacity: 1;
+    visibility: visible; */
+    opacity: 0;
+    visibility: hidden;
     display: flex;
     justify-content: center;
     position: fixed;
@@ -953,5 +964,173 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
   }
   
 
-/* ------------------------------------------------ */
+/* --------------------resultado de busqueda---------------------------- */
+
+.resultado{
+    opacity: 1;
+    visibility: visible;
+    display: grid;
+    grid-template-columns: repeat(10, 1rem);
+    gap:6rem;
+    justify-content: center;
+    position: absolute;
+    background-color: #fffffff6;
+    z-index: 99;
+    width: 100%;
+    box-shadow: 0 0 2rem 0.1rem black;
+}
+
+.close-buscar{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    border: solid;
+    color: black;
+    padding: 0.2rem;
+    margin: 1rem 0 0 74rem;
+    z-index: 99999999;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-buscar:hover{
+    color: rgb(217, 0, 255);
+    border-color: rgb(217, 0, 255);
+}
+
+.card-buscar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 0.7rem;
+    text-align: center;
+    margin: 1rem -2rem;
+    width: 5rem;
+}
+
+.ancor-b{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    border: solid;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    padding: 0 0.9rem;
+    color:#5725a2;
+}
+
+.ancor-b:hover{
+    color: rgb(217, 0, 255);
+    border-color:rgb(217, 0, 255);
+    transition: 0.5s;
+}
+
+.busca-img{
+    align-self: center;
+    width: 4rem;
+}
+
+.name-buscar{
+    text-align: center;
+}
+
+/* --------------------------------------datos del comprador------------------- */
+
+.section-micompra{
+    margin-bottom: 7rem;
+}
+
+.section-micompra h3{
+    position: absolute;
+    margin-left: 18rem;
+    margin-bottom: 3rem;
+}
+
+.datos{
+    border: solid;
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.627);
+    padding: 2rem 0.8rem 10rem 0;
+    width: 59%;
+    display: grid;
+    grid-template-columns: repeat(2,10rem);
+    justify-content: start;
+    gap: 6rem;
+}
+
+.datos p{
+    margin-left: 5rem;
+    margin-top: 5rem;
+}
+
+
+.misdatos{
+    margin-left: 4rem;
+    width: 14rem;
+    padding: 0.8rem;
+    border-radius: 0.9rem;
+    background-color: rgba(237, 237, 237, 0.66);
+    border: solid;
+    border-color: rgba(0, 0, 0, 0.899);
+}
+
+.siguiente{
+    position: absolute;
+    margin: 45rem 0 0 18rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border-color: wheat;
+    background-color: rgb(0, 0, 0);
+    color: wheat;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.siguiente:hover{
+    background-color: #00000091;
+}
+
+.contenedorCarritox{
+    position: absolute;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    height: 87%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 0 0 45.8rem;
+    box-shadow: 0 0 1rem 0.1rem rgba(118, 118, 118, 0.704);
+    padding: 10rem 0 20rem 0;
+}
+
+.contenedorCarritox h3{
+    position: absolute;
+    margin: 0 0 45rem 2rem;
+}
+
+.main-compra{
+    height: 50%;
+}
+
+.volver-compra{
+    position: absolute;
+    text-decoration: none;
+    background-color: black;
+    border: solid;
+    border-radius: 30rem;
+    padding: 1rem;
+    font-size: 0.7rem;
+    margin: 3rem 0 0 6rem;
+    color: white;
+    font-family:fantasy;
+    transition: 0.3s;
+}
+
+.volver-compra:hover{
+    /* padding: 1.1rem; */
+    font-size: 1rem;
+}
+
 

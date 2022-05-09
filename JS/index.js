@@ -193,9 +193,16 @@ fetch("/JS/json/prendas.json")
                     }
                   });
             }
+
+            const btnCompra = document.createElement("a")
+            btnCompra.textContent= "Finalizar Compra"
+            btnCompra.className="btn-compra"
+            btnCompra.onclick= ()=>{
+                btnCompra.href= "./html/compra.html"
+            }
     
             modalCarrito.appendChild(eliminar)
-            
+            modalCarrito.appendChild(btnCompra)
             
             divPrendas.appendChild(borrarPrenda)
             divPrendas.appendChild(divCantidad)
@@ -204,6 +211,7 @@ fetch("/JS/json/prendas.json")
             divPrendas.appendChild(imgPrenda)
             divPrendas.appendChild(namePrenda)
             divPrendas.appendChild(pricePrenda)
+            
     
             contenedorCarrito.appendChild(divPrendas)
     
@@ -213,6 +221,10 @@ fetch("/JS/json/prendas.json")
     }
 
 // JSON.stringify(localStorage.getItem(carrito))
+
+// const finalizar = documnet.querySelector(".btn-compra")
+
+
 
 function sacarDelCarrito(prenda){
 
