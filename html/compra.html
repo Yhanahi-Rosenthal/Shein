@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,40 +12,117 @@
         <section>
             <div class="contenedorCarritox">
                 <h3>Resumen:</h3>
-                <h6 class="total">Total:</h6>
-                <div class="carrito1">
+             
+                <div class="carrito2">
                     <div class="compra">
                                     
                     </div>
                 </div>
+                <h6 class="total2">Total:</h6>
             </div>
         </section>
         <section class="section-micompra">
             <h3>Mi compra</h3>
             <div class="datos">
-                <div>
-                    <p>Nombre:</p>
-                    <input type="text" placeholder="Nombre" class="misdatos" required>
-                </div>
-                <div>
-                    <p>Apellido:</p>
-                    <input type="text" placeholder="Apellido" class="misdatos" required>
-                </div>
-                <div>
-                    <p>Email:</p>
-                    <input type="email" name="" placeholder="Email" id="" class="misdatos" required>
-                </div>
-                <div>
-                    <p>Teléfono:</p>
-                    <input type="tel" name="" placeholder="Telefono" id="" class="misdatos" required>
-                </div>
-                <div>
-                    <p>C.I:</p>
-                    <input type="text" placeholder="C.I:" class="misdatos" required>
-                </div>
-                <input type="submit" value="Siguiente" class="siguiente">
+                <form id="form-fin" required>
+                    <div>
+                        <p>Email:</p>
+                        <input type="email" name="dato" value="" placeholder="Email" id="" class="misdatos" required>
+                    </div>
+                    <div>
+                        <p>Nombre:</p>
+                        <input type="text" value="" name="dato" placeholder="Nombre" class="misdatos" required>
+                    </div>
+                    <div>
+                        <p>Apellido:</p>
+                        <input type="text"  value="" name="dato" placeholder="Apellido" class="misdatos" required>
+                    </div>
+                    <div>
+                        <p>Teléfono:</p>
+                        <input type="number" name="" value="" name="dato" placeholder="Telefono" id="" class="misdatos" required>
+                    </div>
+                    <div>
+                        <p>C.I:</p>
+                        <input type="number" value="" name="dato" placeholder="Ej: 12345678-9" class="misdatos" required">
+                    </div>
+                    <button class="siguiente" id="siguiente">Siguiente</button>
+                </form>  
             </div>
             <a href="/index.html" class="volver-compra"> ← Volver </a>
+        </section>
+        <section>
+            <div class="contenedor-f">
+                <div class="contenedor-f2">
+                    <p class="volver">←</p>
+                    <h4>Selecciona como pagar tu compra</h4>
+                    <form action="" >
+                        <form action="">
+                            <div class="input-radio">
+                                <input type="radio" name="uno" id="radio" checked>
+                                <img src="../img/tarjetas/tarjeta-de-credito.png" alt="" width="60" height="60">
+                                <p>Tarjeta de credito o debito</p>
+                                <div class="tarjetass">
+                                    <img src="../img/tarjetas/visa.png" alt="" width="20px" height="11px">
+                                    <img src="../img/tarjetas/mastercard.png" alt="" width="20px" height="11px">
+                                    <img src="../img/tarjetas/lider.png" alt="" width="20px" height="11px">
+                                    <img src="../img/tarjetas/oca.png" alt="" width="20px" height="11px">
+                                    <img src="../img/tarjetas/redpagos.png" alt="" width="20px" height="11px">
+                                    <img src="../img/tarjetas/abitab.png" alt="" width="26px" height="11px">
+                                    <img src="../img/tarjetas/mercado-pago.png" alt="" width="30px" height="11px">
+                                </div>
+                            </div>
+                            <div class="input-radio">
+                                <input type="radio" name="uno" id="radio">
+                                <img src="../img/tarjetas/banco.png" alt="" width="60" height="60">
+                                <p>Transeferencia bancaria</p>
+                            </div>
+                        </form>
+                        <br><br>
+                        <div>
+                            <div class="dato-tarjeta">
+                                <div>
+                                    <p>Numero de tarjeta:</p>
+                                    <input type="number"  class="misdatos1" required>
+                                </div>
+                                <div>
+                                    <p>Nombre del titular</p>
+                                    <input type="text"  class="misdatos1" required>
+                                </div>
+                                <div>
+                                    <p>Vencimiento</p>
+                                    <input type="number"  class="misdatos1" required>
+                                </div>
+                                <div>
+                                    <p>CVV</p>
+                                    <input type="number"  class="misdatos1" required>
+                                </div>
+                            </div>
+                            <p>Ciudad:</p>
+                            <select name="Ciudad" class="misdatos" required>
+
+                                <option>Montevideo - Uruguay</option>            
+                                <option>Buenos Aires - Argentina</option> 
+                                <option>Brasilia - Brasil</option>     
+                                <option>Lima - Perú</option>
+                                <option>Santiago de Chile - Chile</option>
+                                <option>Bogotá - Colombia</option>
+                                <option>Caracas - Venezuela</option>
+                                <option>Quito - Ecuador</option>
+
+                                </select>
+                        </div>
+                        <div>
+                            <p>Direccion:</p>
+                            <input type="text" placeholder="Direccion" class="misdatos" required>
+                        </div>
+                        <div>
+                            <p>Numero:</p>
+                            <input type="number" name="" placeholder="Numero" id="" class="misdatos" required>
+                        </div>
+                        <button class="siguiente" id="finalizar">Finalizar Compra</button>
+                    </form>  
+                </div>
+            </div>
         </section>
     </main>
     <div>
@@ -54,13 +130,8 @@
             <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
       <script src="../JS/index.js"></script>
-      <script src="../JS/modal.js"></script>
-      <script src="../JS/scroll.js"></script>
       <script src="../JS/spinner.js"></script>
-      <script src="../JS/buscador.js"></script>
+      <script src="../JS/finalizar.js"></script>
 </body>
 </html>

@@ -1,7 +1,5 @@
 const mainRopa = document.querySelector(".main-ropa")
 
-// document.addEventListener("DOMContentLoaded", ()=>{ prendas})
-
 const contenedorCarrito = document.querySelector(".carrito1")
 let carrito = []
 let cantidad = 1                                           
@@ -72,7 +70,7 @@ fetch("/JS/json/prendas.json")
             
         }
         carrito.push(prenda)
-        
+        localStorage.setItem(prenda.id, JSON.stringify(prenda))
         carritoDeCompras()
         total()
         
@@ -86,7 +84,6 @@ fetch("/JS/json/prendas.json")
         
         carrito.forEach(prenda =>{        
             
-            // localStorage.setItem(prenda.id, JSON.stringify(prenda))
     
             const divPrendas = document.createElement("div")
             divPrendas.className = "divPrenda"
@@ -113,6 +110,7 @@ fetch("/JS/json/prendas.json")
                 carrito.splice(id, 1)
                 divPrendas.remove()
                 total()
+                globoTotal()
                 Toastify({
     
                     className: "borrar",
@@ -159,7 +157,6 @@ fetch("/JS/json/prendas.json")
             restar.onclick = ()=>{
                 sacarDelCarrito(prenda)
                 globoTotal()
-    
                 Toastify({
     
                     className: "quitar",
@@ -215,15 +212,9 @@ fetch("/JS/json/prendas.json")
     
             contenedorCarrito.appendChild(divPrendas)
     
-           
         })
         total()
     }
-
-// JSON.stringify(localStorage.getItem(carrito))
-
-// const finalizar = documnet.querySelector(".btn-compra")
-
 
 
 function sacarDelCarrito(prenda){
@@ -261,7 +252,10 @@ function total(){
     })
 
     totalPrendas.innerHTML = "Total: $" + total
+    localStorage.setItem("total", JSON.stringify(total))
 }
+
+
 
 function globoTotal(){
     let cantidad = 0
@@ -271,19 +265,9 @@ function globoTotal(){
     })
 
     globoCantidad.innerHTML = cantidad
-    carritoDeCompras()
 }
 
-// function borrarRopa(){
-//     let id = document.querySelector(".divPrenda")  
-//             carrito.splice(id, 1)
-//             id.remove()
-// }
-
-
 const mainRopa2 = document.querySelector(".main-ropa2")
-
-// document.addEventListener("DOMContentLoaded", () =>{Diseñadores})
 
 fetch('/JS/json/Diseñadores.json')
     .then((res) => res.json())
@@ -308,9 +292,6 @@ fetch('/JS/json/Diseñadores.json')
         })
     })
 
-// function mostrarDiseñados(){
-    
-// }
 
 
 

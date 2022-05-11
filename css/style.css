@@ -29,6 +29,7 @@ body::-webkit-scrollbar-thumb {
     padding-bottom: 2rem;
 }
 
+
 header{
     max-width: 100%;
 }
@@ -880,10 +881,8 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
 /* -------------------spinner------------------------- */
 
 .fondo-carga{
-    /* opacity: 1;
-    visibility: visible; */
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    visibility: visible;
     display: flex;
     justify-content: center;
     position: fixed;
@@ -1053,8 +1052,6 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
     background-color: rgba(255, 255, 255, 0.627);
     padding: 2rem 0.8rem 10rem 0;
     width: 59%;
-    display: grid;
-    grid-template-columns: repeat(2,10rem);
     justify-content: start;
     gap: 6rem;
 }
@@ -1066,8 +1063,8 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
 
 
 .misdatos{
-    margin-left: 4rem;
-    width: 14rem;
+    margin-left: 6rem;
+    width: 20rem;
     padding: 0.8rem;
     border-radius: 0.9rem;
     background-color: rgba(237, 237, 237, 0.66);
@@ -1077,7 +1074,7 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
 
 .siguiente{
     position: absolute;
-    margin: 45rem 0 0 18rem;
+    margin: 5rem 0 0 18rem;
     padding: 1rem;
     border-radius: 1rem;
     border-color: wheat;
@@ -1102,7 +1099,7 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
     flex-direction: column;
     margin: 0 0 0 45.8rem;
     box-shadow: 0 0 1rem 0.1rem rgba(118, 118, 118, 0.704);
-    padding: 10rem 0 20rem 0;
+    padding: 10rem 0 28rem 0;
 }
 
 .contenedorCarritox h3{
@@ -1133,4 +1130,149 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
     font-size: 1rem;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+/* es para que input tipo number no funcione las flechas y solo admita numeros */
 
+.contenedor-f{
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    width: 45.7rem;
+    height: 63rem;
+    position: absolute;
+    margin: -70rem 0 0 0;
+}
+
+.contenedor-f2{
+    margin:1rem 0 0 0;
+    background-color: white;
+    width: 30rem;
+}
+
+.space{
+    margin-top: 5rem;
+}
+
+.input-radio{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    border: solid #ffffff30;
+    border-radius: 0.3rem;
+    height: 5rem;
+    width: 26rem;
+    text-align: center;
+    margin: 0.5rem;
+    background-color: #e5e4e4da;
+    box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.726);
+    cursor: pointer;
+}
+
+.input-radio:hover{
+    background-color: #aeaeae;
+}
+
+.input-radio p{
+    font-size: 1rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.input-radio img{
+    margin-top: 1rem;
+}
+
+#radio{
+    cursor: pointer;
+    position: absolute;
+    margin: 2rem 20rem 0 0;
+    width: 100%;
+    height: 1rem;
+}
+
+.volver{
+    position: absolute;
+    margin:0 0 0 -6rem;
+    font-size: 1.3rem;
+    border: solid rgb(21, 21, 21);
+    width: 2rem;
+    text-align: center;
+    border-radius: 20rem;
+    cursor: pointer;
+}
+
+.volver:hover{
+    background-color: #e0e0e0;
+}
+
+.tarjetass{
+    position: absolute;
+    margin: 2rem 0 0 4rem;
+}
+
+.total1{
+    text-align: center;
+}
+
+.dato-tarjeta{
+    display: grid;
+    grid-template-columns: repeat(2, 17rem);
+}
+
+.misdatos1{
+    width: 13rem;
+    padding: 0.5rem;
+    border-radius: 0.9rem;
+    background-color: rgba(237, 237, 237, 0.66);
+    border: solid;
+    border-color: rgba(0, 0, 0, 0.899);
+}
+
+.divCantidad1{
+    background:none;
+    border: none;
+    padding: 0;
+    width: 2.9rem;
+    height: 1rem;
+    text-align: center;
+    margin: 3rem 0 0 -13.5rem;
+}
+
+.precioCarrito1{
+    display: flex;
+    align-items: center;
+    margin-left: 5rem;
+}
+
+.imgCarrito1{
+    height: 80%;
+    width: 13%;
+    margin: 1rem 0 0 -28rem;
+    border: solid black;
+}
+
+.carrito2{
+    margin-top: -10rem;
+    max-height: 80%;
+    background-color: white;
+    overflow: hidden scroll;
+    border: groove rgba(98, 98, 98, 0.094);
+}
+
+.carrito2::-webkit-scrollbar {
+    width: 4px;          
+  }
+  
+  .carrito2::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);       
+  }
+  
+  .carrito2::-webkit-scrollbar-thumb {
+      background-color: #00000099;     
+    border: 3px solid #00000000;  
+  }

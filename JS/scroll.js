@@ -10,4 +10,3 @@ window.addEventListener("scroll", () =>{
         menu.style.top = "0"
     }
 })
-
