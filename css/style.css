@@ -881,8 +881,8 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
 /* -------------------spinner------------------------- */
 
 .fondo-carga{
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    visibility: visible;
     display: flex;
     justify-content: center;
     position: fixed;

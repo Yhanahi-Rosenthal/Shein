@@ -30,6 +30,7 @@ volverComprar.addEventListener("click", ()=>{
           
         if (willDelete) {
             volverComprar.setAttribute("href", "/index.html")
+            localStorage.clear()
         }
       });
 })
@@ -44,7 +45,7 @@ function totalResumen(){
     let total = JSON.parse(localStorage.getItem("total"))
 
     totalPrendas.innerHTML = "Total: $" + total
-    localStorage.removeItem("total")
+    // localStorage.removeItem("total")
     
 }
 
@@ -58,13 +59,12 @@ function Resumen(){
     for(i = 0; i < localStorage.length; i++){
         const clave = localStorage.key(i)
         const prenda = JSON.parse(localStorage.getItem(clave)) 
-        
         productos.push(prenda) 
         
       
     }
     ponerenResumen()
-    localStorage.clear()
+    
 }
 
 
@@ -130,7 +130,15 @@ tarjetas.onclick= ()=>{
 
 const finalizar = document.querySelector("#finalizar")
 
+const opciones = (finalizar)=>{
+    return new Promise( (resolve, reject) =>{
+        if(finalizar === resolve){
+            console.log("si")
+        }
+    })
+}
+
 finalizar.onclick= ()=>{
-    swal("Tu compra ha sido realizada!", "En los proximos dias te llegará para verte mas facherit@!", "success");
+    swal("Tu compra ha sido realizada!", "Nos comunicaremos contigo en breves! y en los proximos dias te llegará tu ropa para verte mas facherit@!", "success"); 
 
 }
