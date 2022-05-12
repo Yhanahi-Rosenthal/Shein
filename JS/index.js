@@ -49,7 +49,6 @@ fetch("/JS/json/prendas.json")
                 divRopa.appendChild(button)
                 
                 mainRopa.appendChild(divRopa)
-                console.log(mainRopa)
             })   
     })
 
@@ -147,6 +146,7 @@ fetch("/JS/json/prendas.json")
             divCantidad.disabled = "disabled"
             divCantidad.value = prenda.cantidad
             divCantidad.className = "divCantidad"
+            
     
             const restar = document.createElement("button")
             restar.textContent = "-"
@@ -195,7 +195,7 @@ fetch("/JS/json/prendas.json")
             btnCompra.textContent= "Finalizar Compra"
             btnCompra.className="btn-compra"
             btnCompra.onclick= ()=>{
-                btnCompra.href= "./html/compra.html"
+                btnCompra.href= "./compra.html"
             }
     
             modalCarrito.appendChild(eliminar)
@@ -291,6 +291,7 @@ fetch('/JS/json/Diseñadores.json')
             mainRopa2.appendChild(divRopa1)
         })
     })
+
 
 
 

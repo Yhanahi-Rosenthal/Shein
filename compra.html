@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
             <div class="datos">
                 <form id="form-fin" required>
                     <div>
-                        <p>Email:</p>
+                        <p>*Email:</p>
                         <input type="email" name="dato" value="" placeholder="Email" id="" class="misdatos" required>
                     </div>
                     <div>
@@ -48,7 +48,7 @@
                     <button class="siguiente" id="siguiente">Siguiente</button>
                 </form>  
             </div>
-            <a href="/index.html" class="volver-compra"> ← Volver </a>
+            <a class="volver-compra"> ← Volver </a>
         </section>
         <section>
             <div class="contenedor-f">
@@ -58,22 +58,22 @@
                     <form action="" >
                         <form action="">
                             <div class="input-radio">
-                                <input type="radio" name="uno" id="radio" checked>
-                                <img src="../img/tarjetas/tarjeta-de-credito.png" alt="" width="60" height="60">
+                                <input type="radio" name="uno" id="radio" class="tarjetas" checked>
+                                <img src="./img/tarjetas/tarjeta-de-credito.png" alt="" width="60" height="60">
                                 <p>Tarjeta de credito o debito</p>
                                 <div class="tarjetass">
-                                    <img src="../img/tarjetas/visa.png" alt="" width="20px" height="11px">
-                                    <img src="../img/tarjetas/mastercard.png" alt="" width="20px" height="11px">
-                                    <img src="../img/tarjetas/lider.png" alt="" width="20px" height="11px">
-                                    <img src="../img/tarjetas/oca.png" alt="" width="20px" height="11px">
-                                    <img src="../img/tarjetas/redpagos.png" alt="" width="20px" height="11px">
-                                    <img src="../img/tarjetas/abitab.png" alt="" width="26px" height="11px">
-                                    <img src="../img/tarjetas/mercado-pago.png" alt="" width="30px" height="11px">
+                                    <img src="./img/tarjetas/visa.png" alt="" width="20px" height="11px">
+                                    <img src="./img/tarjetas/mastercard.png" alt="" width="20px" height="11px">
+                                    <img src="./img/tarjetas/lider.png" alt="" width="20px" height="11px">
+                                    <img src="./img/tarjetas/oca.png" alt="" width="20px" height="11px">
+                                    <img src="./img/tarjetas/redpagos.png" alt="" width="20px" height="11px">
+                                    <img src="./img/tarjetas/abitab.png" alt="" width="26px" height="11px">
+                                    <img src="./img/tarjetas/mercado-pago.png" alt="" width="30px" height="11px">
                                 </div>
                             </div>
                             <div class="input-radio">
-                                <input type="radio" name="uno" id="radio">
-                                <img src="../img/tarjetas/banco.png" alt="" width="60" height="60">
+                                <input type="radio" name="uno" id="radio" class="efectivo">
+                                <img src="./img/tarjetas/banco.png" alt="" width="60" height="60">
                                 <p>Transeferencia bancaria</p>
                             </div>
                         </form>
@@ -130,8 +130,9 @@
             <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
     </div>
-      <script src="../JS/index.js"></script>
-      <script src="../JS/spinner.js"></script>
-      <script src="../JS/finalizar.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script src="./JS/index.js"></script>
+      <script src="./JS/spinner.js"></script>
+      <script src="./JS/finalizar.js"></script>
 </body>
 </html>
