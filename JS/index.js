@@ -186,6 +186,7 @@ fetch("/JS/json/prendas.json")
                   .then((willDelete) => {
                     if (willDelete) {
                       swal(vaciarCarrito(prenda.id),
+                      swal(localStorage.clear()),
                       swal(globoTotal()));
                     }
                   });
@@ -235,7 +236,6 @@ function sacarDelCarrito(prenda){
     carritoDeCompras()
     
 }
-
 
 function vaciarCarrito(){
     carrito = []
@@ -291,8 +291,3 @@ fetch('/JS/json/Diseñadores.json')
             mainRopa2.appendChild(divRopa1)
         })
     })
-
-
-
-
-

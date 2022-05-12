@@ -99,6 +99,26 @@ function ponerenResumen(){
         
         const borrarPrenda = document.createElement("img")
         borrarPrenda.className = "botonborrar"
+        borrarPrenda.src = "./img/borrar.png"
+        
+        borrarPrenda.onclick = ()=>{
+            let id = document.querySelector(".divPrenda")  
+            carrito.splice(id, 1)
+            divPrendas.remove()
+            total()
+            globoTotal()
+            Toastify({
+
+                className: "borrar",
+
+                text: "Producto borrado!",
+
+                position: "left",
+                
+                duration: 3000
+                
+                }).showToast();
+        }
         
         divPrendas.appendChild(borrarPrenda)
         divPrendas.appendChild(imgPrenda)
@@ -129,14 +149,6 @@ tarjetas.onclick= ()=>{
 // ---------------------------------------
 
 const finalizar = document.querySelector("#finalizar")
-
-const opciones = (finalizar)=>{
-    return new Promise( (resolve, reject) =>{
-        if(finalizar === resolve){
-            console.log("si")
-        }
-    })
-}
 
 finalizar.onclick= ()=>{
     swal("Tu compra ha sido realizada!", "Nos comunicaremos contigo en breves! y en los proximos dias te llegará tu ropa para verte mas facherit@!", "success"); 
