@@ -5,6 +5,7 @@ const requerido = document.querySelector(".misdatos")
 const volverComprar = document.querySelector(".volver-compra")
 
 
+
 siguiente.addEventListener("click", e =>{
     e.preventDefault()
     if(requerido.value !== ''){
@@ -38,99 +39,180 @@ volverComprar.addEventListener("click", ()=>{
 
 
 // -----------------------------------
-const totalPrendas = document.querySelector(".total2")
+fetch("/JS/json/prendas.json")
+    .then((res) => res.json())
+    .then((prendas) =>{
 
-function totalResumen(){
-    
-    let total = JSON.parse(localStorage.getItem("total"))
-
-    totalPrendas.innerHTML = "Total: $" + total
-    // localStorage.removeItem("total")
-    
-}
-
-totalResumen()
-
-const compra = document.querySelector(".carrito2")
-let productos=[]
-
-function Resumen(){
-    localStorage.removeItem("total")
-    for(i = 0; i < localStorage.length; i++){
-        const clave = localStorage.key(i)
-        const prenda = JSON.parse(localStorage.getItem(clave)) 
-        productos.push(prenda) 
+            prendas.forEach(prenda =>{
+                const divRopa = document.createElement("div")
+                divRopa.className = "card"
         
-      
+                const imgRopa = document.createElement("img")
+                imgRopa.src = prenda.img
+                imgRopa.className = "main-img"
+        
+                const nameRopa = document.createElement("h4")
+                nameRopa.textContent = prenda.name
+                nameRopa.className = "h4-ropa"
+        
+                const priceRopa = document.createElement("b")
+                priceRopa.textContent = "$" + prenda.price
+                priceRopa.className = "ropa-precio"
+        
+                const button = document.createElement("button")
+                button.className = "botones"
+                button.textContent = "Comprar"
+                button.onclick = () =>{
+                    PonerEnCarrito(prenda)
+                }
+                
+                
+        
+                divRopa.appendChild(imgRopa)
+                divRopa.appendChild(nameRopa)
+                divRopa.appendChild(priceRopa)
+                divRopa.appendChild(button)
+                
+                mainRopa.appendChild(divRopa)
+            })   
+    })
+
+    function PonerEnCarrito(prenda){
+            
+        const input = document.getElementsByClassName("divCantidad")
+        for(i = 0; i < productos.length ; i++){
+            if(productos[i].id === prenda.id){
+                productos[i].cantidad++
+                const total = input[i]
+                total.value++
+                ponerenResumen()
+                return null;
+                // return null sirve para que no se ejecute carrito.push ni caritodecompras cuando se repita.
+                
+            }
+            
+        }
+        productos.push(prenda)
+        ponerenResumen()
+        total()
+        
     }
+
+    const compra = document.querySelector(".carrito2")
+    let productos=[]
+
+    function Resumen(){
+            const prenda = JSON.parse(localStorage.getItem("1")) 
+            for(ropa of prenda){
+                productos.push(ropa) 
+            }
+         
+        ponerenResumen()
+        
+    }
+    
+    Resumen()
+    
+    function ponerenResumen(){
+        compra.innerHTML = ""
+        
+        productos.forEach(prenda =>{        
+            
+    
+            const divPrendas = document.createElement("div")
+            divPrendas.className = "divPrenda"
+            
+    
+            const imgPrenda = document.createElement("img")
+            imgPrenda.src = prenda.img
+            imgPrenda.className = "imgCarrito"
+    
+            const namePrenda = document.createElement("h4")
+            namePrenda.textContent = prenda.name
+            namePrenda.className = "nameCarrito1"
+    
+            const pricePrenda = document.createElement("b")
+            pricePrenda.textContent = "$" + prenda.price
+            pricePrenda.className = "precioCarrito"
+            
+            const borrarPrenda = document.createElement("img")
+            borrarPrenda.className = "botonborrar"
+            borrarPrenda.src = "./img/borrar.png"
+    
+            borrarPrenda.onclick = ()=>{
+                let id = document.querySelector(".divPrenda")  
+                productos.splice(id, 1)
+                divPrendas.remove()
+                total()
+            }
+    
+            const equis = document.createElement("p")
+            equis.textContent = "x"
+            equis.className = "equis"
+    
+            equis.onclick = () =>{
+                PonerEnCarrito(prenda)
+            }
+    
+            const divCantidad = document.createElement("input")
+            divCantidad.type = "number"
+            divCantidad.disabled = "disabled"
+            divCantidad.value = prenda.cantidad
+            divCantidad.className = "divCantidad1"
+            
+    
+            
+            divPrendas.appendChild(borrarPrenda)
+            divPrendas.appendChild(divCantidad)
+            divPrendas.appendChild(equis)
+            divPrendas.appendChild(imgPrenda)
+            divPrendas.appendChild(namePrenda)
+            divPrendas.appendChild(pricePrenda)
+            
+    
+            compra.appendChild(divPrendas)
+    
+        })
+        total()
+        
+    }
+
+
+function sacarDelCarrito(prenda){
+
+    const input = document.getElementsByClassName("divCantidad")
+    for(i = 0; i < productos.length ; i++){
+        if(productos[i].id === prenda.id){
+            productos[i].cantidad--
+            const total = input[i]
+            total.value--
+            ponerenResumen()
+            return null;
+        }
+        
+    }
+    productos.push(prenda)
+    
     ponerenResumen()
     
 }
 
-
-Resumen()
-
-function ponerenResumen(){
-    
-    productos.forEach(prenda =>{        
-        
-
-        const divPrendas = document.createElement("div")
-        divPrendas.className = "divPrenda"
-        
-
-        const imgPrenda = document.createElement("img")
-        imgPrenda.src = prenda.img
-        imgPrenda.className = "imgCarrito1"
-
-        const namePrenda = document.createElement("h4")
-        namePrenda.textContent = prenda.name
-        namePrenda.className = "nameCarrito"
-
-        const pricePrenda = document.createElement("b")
-        pricePrenda.textContent = "$" + prenda.price
-        pricePrenda.className = "precioCarrito1"
-
-        const divCantidad = document.createElement("input")
-            divCantidad.type = "number"
-            divCantidad.disabled = "disabled"
-            divCantidad.value = prenda.cantidad
-            divCantidad.className = "divCantidad"
-        
-        const borrarPrenda = document.createElement("img")
-        borrarPrenda.className = "botonborrar"
-        borrarPrenda.src = "./img/borrar.png"
-        
-        borrarPrenda.onclick = ()=>{
-            let id = document.querySelector(".divPrenda")  
-            carrito.splice(id, 1)
-            divPrendas.remove()
-            total()
-            globoTotal()
-            Toastify({
-
-                className: "borrar",
-
-                text: "Producto borrado!",
-
-                position: "left",
-                
-                duration: 3000
-                
-                }).showToast();
-        }
-        
-        divPrendas.appendChild(borrarPrenda)
-        divPrendas.appendChild(imgPrenda)
-        divPrendas.appendChild(namePrenda)
-        divPrendas.appendChild(pricePrenda)
-        
-
-        compra.appendChild(divPrendas)
-
-    })
+function vaciarCarrito(){
+    productos = []
+    total()
+    ponerenResumen(productos)
 }
 
+function total(){
+    let total = 0
+    const totalPrendas = document.querySelector(".total2")
+    productos.forEach((prenda) =>{
+        const price = prenda?.price
+        total = total + price*prenda?.cantidad
+    })
+
+    totalPrendas.innerHTML = "Total: $" + total
+}
 // -------------------------------
 
 const inputTarjeta = document.querySelector(".efectivo")

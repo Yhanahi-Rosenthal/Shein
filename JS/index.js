@@ -69,7 +69,7 @@ fetch("/JS/json/prendas.json")
             
         }
         carrito.push(prenda)
-        localStorage.setItem(prenda.id, JSON.stringify(prenda))
+        
         carritoDeCompras()
         total()
         
@@ -82,7 +82,7 @@ fetch("/JS/json/prendas.json")
         contenedorCarrito.innerHTML = ""
         
         carrito.forEach(prenda =>{        
-            
+            localStorage.setItem(prenda.cantidad, JSON.stringify(carrito))
     
             const divPrendas = document.createElement("div")
             divPrendas.className = "divPrenda"
@@ -212,11 +212,11 @@ fetch("/JS/json/prendas.json")
             
     
             contenedorCarrito.appendChild(divPrendas)
-    
+            
         })
         total()
     }
-
+    
 
 function sacarDelCarrito(prenda){
 
@@ -252,7 +252,6 @@ function total(){
     })
 
     totalPrendas.innerHTML = "Total: $" + total
-    localStorage.setItem("total", JSON.stringify(total))
 }
 
 

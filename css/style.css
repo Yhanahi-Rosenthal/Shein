@@ -699,7 +699,7 @@ header{
     background:none;
     border: none;
     padding: 0;
-    width: 2.9rem;
+    width: 3.4rem;
     height: 1rem;
     text-align: center;
     margin: 3rem 0 0 -11.5rem;
@@ -730,6 +730,16 @@ header{
     cursor: pointer;
 }
 
+.equis{
+    background-color: #ffffffb2;
+    border-color: rgba(170, 170, 170, 0.686);
+    border-radius: 7px;
+    margin: 2.9rem 0 0 -1rem;
+    height: 1.3rem;
+    transition: 0.15s;
+    cursor: pointer;
+}
+
 .botonRestar:hover{
     filter: invert();
 }
@@ -750,6 +760,12 @@ header{
 }
 
 .nameCarrito{
+    margin: 0 0 0 -3rem;
+    padding: 3rem 0 0 4rem;
+}
+
+.nameCarrito1{
+    font-size: 0.9rem;
     margin: 0 0 0 -3rem;
     padding: 3rem 0 0 4rem;
 }
@@ -881,8 +897,8 @@ background: linear-gradient(7deg, rgba(247,236,203,1) 0%, rgba(255,233,106,0.813
 /* -------------------spinner------------------------- */
 
 .fondo-carga{
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     display: flex;
     justify-content: center;
     position: fixed;
