@@ -6,7 +6,7 @@ const volverComprar = document.querySelector(".volver-compra")
 
 
 
-siguiente.addEventListener("click", e =>{
+siguiente.addEventListener("click", (e) =>{
     e.preventDefault()
     if(requerido.value !== ''){
         contenedor.style.opacity="1"
@@ -39,44 +39,6 @@ volverComprar.addEventListener("click", ()=>{
 
 
 // -----------------------------------
-fetch("/JS/json/prendas.json")
-    .then((res) => res.json())
-    .then((prendas) =>{
-
-            prendas.forEach(prenda =>{
-                const divRopa = document.createElement("div")
-                divRopa.className = "card"
-        
-                const imgRopa = document.createElement("img")
-                imgRopa.src = prenda.img
-                imgRopa.className = "main-img"
-        
-                const nameRopa = document.createElement("h4")
-                nameRopa.textContent = prenda.name
-                nameRopa.className = "h4-ropa"
-        
-                const priceRopa = document.createElement("b")
-                priceRopa.textContent = "$" + prenda.price
-                priceRopa.className = "ropa-precio"
-        
-                const button = document.createElement("button")
-                button.className = "botones"
-                button.textContent = "Comprar"
-                button.onclick = () =>{
-                    PonerEnCarrito(prenda)
-                }
-                
-                
-        
-                divRopa.appendChild(imgRopa)
-                divRopa.appendChild(nameRopa)
-                divRopa.appendChild(priceRopa)
-                divRopa.appendChild(button)
-                
-                mainRopa.appendChild(divRopa)
-            })   
-    })
-
     function PonerEnCarrito(prenda){
             
         const input = document.getElementsByClassName("divCantidad")

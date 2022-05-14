@@ -216,7 +216,7 @@ fetch("/JS/json/prendas.json")
         })
         total()
     }
-    
+
 
 function sacarDelCarrito(prenda){
 
